@@ -25,4 +25,17 @@ function showTable($data){
     }
     echo "</table>";
 }
-showTable ($result);
+
+//"crea una función que procese el resultado de get API y si detecta que hay valores numéricos los reemplace por un texto que sea 'es numérico'"
+function replaceNum($array){
+    foreach($array as $key => $value){
+        foreach($value as $key2 => $value2){
+            if(is_numeric($value2)){
+                $array[$key][$key2] = "es numérico";
+            }
+        }
+    }
+    return $array;
+}
+
+showTable(replaceNum($result));
